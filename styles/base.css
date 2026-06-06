@@ -1,0 +1,119 @@
+/* ========================================
+   BASE — variáveis, reset, elementos globais
+   ======================================== */
+
+:root {
+  /* Paleta principal */
+  --clr-bg:         #0a0a0f;
+  --clr-wall:       #1a1025;
+  --clr-surface:    #2d1b2e;
+  --clr-surface-2:  #1e1030;
+  --clr-border:     #6b2737;
+  --clr-border-dim: #3b1a2a;
+  --clr-gold:       #e8c547;
+  --clr-gold-dim:   rgba(232, 197, 71, 0.45);
+  --clr-green:      #00ff41;
+  --clr-red:        #ff4444;
+  --clr-wood:       #4a3218;
+  --clr-wood-light: #5a4228;
+  --clr-moss:       #3b5249;
+
+  /* Tipografia */
+  --font-mono:  'Share Tech Mono', 'Courier New', monospace;
+  --font-pixel: 'VT323', monospace;
+  --font-serif: 'Cinzel', Georgia, serif;
+
+  /* Transições */
+  --ease: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --dur-fast: 180ms;
+  --dur-base: 350ms;
+  --dur-slow: 700ms;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--clr-bg);
+  font-family: var(--font-mono);
+  color: var(--clr-gold);
+  image-rendering: pixelated;
+}
+
+/* --- Telas --- */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease);
+}
+
+.screen.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- Botões --- */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 2px solid var(--clr-border);
+  background: var(--clr-surface);
+  color: var(--clr-gold);
+  padding: 8px 18px;
+  transition: background var(--dur-fast), box-shadow var(--dur-fast), transform var(--dur-fast);
+}
+
+.btn:hover {
+  background: var(--clr-border);
+  box-shadow: 0 0 12px rgba(107, 39, 55, 0.6);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 1.1em;
+  letter-spacing: 3px;
+}
+
+.btn--close {
+  background: transparent;
+  border: none;
+  color: var(--clr-gold-dim);
+  font-size: 1.2em;
+  padding: 4px 10px;
+}
+
+.btn--close:hover {
+  background: transparent;
+  color: var(--clr-gold);
+  box-shadow: none;
+}
+
+.btn--exit {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  font-size: 0.78em;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+}

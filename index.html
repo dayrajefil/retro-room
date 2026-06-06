@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MrsMelancholic — Retro Room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/crt.css">
+  <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="./styles/room.css">
+  <link rel="stylesheet" href="./styles/overlays.css">
+</head>
+<body>
+
+  <!-- Efeito CRT global -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- TELA: Login -->
+  <div id="screen-login" class="screen screen--login">
+    <div class="monitor">
+      <div class="monitor__case">
+        <div class="monitor__bezel">
+          <div class="monitor__display">
+            <div class="power-led" aria-hidden="true"></div>
+
+            <!-- Formulário -->
+            <div id="monitorForm">
+              <h1 class="site-title">RETRO ROOM</h1>
+              <form class="login-form" id="loginForm" novalidate>
+                <div class="field">
+                  <label class="field__label" for="loginUser">USER:</label>
+                  <input class="field__input" id="loginUser" type="text"
+                         autocomplete="off" autocorrect="off" autocapitalize="off"
+                         spellcheck="false" maxlength="20" placeholder="letras e números">
+                </div>
+                <div class="field">
+                  <label class="field__label" for="loginPass">PASSWORD:</label>
+                  <input class="field__input" id="loginPass" type="password"
+                         autocomplete="off" maxlength="20" placeholder="••••••••">
+                </div>
+                <p class="login-error" id="loginError" role="alert" aria-live="polite"></p>
+                <button class="btn btn--primary" type="submit">[ ENTRAR ]</button>
+                <p class="login-hint">Novo visitante? Conta criada automaticamente.</p>
+              </form>
+            </div>
+
+            <!-- Boot dentro do monitor -->
+            <div id="monitorBoot" class="monitor-boot" hidden>
+              <div class="boot-line" id="bootLine1"></div>
+              <div class="boot-line" id="bootLine2"></div>
+              <div class="boot-line" id="bootLine3"></div>
+              <p class="boot-text" id="bootText"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="monitor__neck"></div>
+      <div class="monitor__base"></div>
+    </div>
+  </div>
+
+  <!-- TELA: Quarto -->
+  <div id="screen-room" class="screen screen--room">
+    <div class="room-viewport" id="roomViewport">
+      <canvas id="roomCanvas"
+              aria-label="Quarto virtual — clique nos objetos para explorar"></canvas>
+    </div>
+
+    <!-- Livro de visitas -->
+    <aside class="guestbook" id="guestbook" aria-label="Visitas recentes">
+      <h2 class="guestbook__title">📖 VISITAS</h2>
+      <ul class="guestbook__list" id="guestbookList"></ul>
+    </aside>
+
+    <!-- Botão sair -->
+    <button class="btn btn--exit" id="btnExit">✕ SAIR</button>
+  </div>
+
+  <!-- ZOOM VIEW: tela cheia ao clicar num objeto -->
+  <div class="zoom-view" id="zoomView" hidden role="dialog" aria-modal="true">
+    <button class="zoom-view__back btn" id="zoomBack">← VOLTAR</button>
+    <h2 class="zoom-view__title" id="zoomTitle"></h2>
+    <div class="zoom-view__scene" id="zoomScene"></div>
+  </div>
+
+  <!-- PROTETOR DE TELA -->
+  <div class="screensaver" id="screensaver" hidden>
+    <div class="screensaver__logo" id="ssLogo">
+      <div class="screensaver__symbol">💀</div>
+      <div class="screensaver__name">RETRO ROOM</div>
+      <small class="screensaver__hint">clique para voltar</small>
+    </div>
+  </div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

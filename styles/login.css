@@ -1,0 +1,193 @@
+/* ========================================
+   LOGIN — tela de monitor CRT antigo
+   ======================================== */
+
+.screen--login {
+  background: var(--clr-bg);
+  background-image:
+    linear-gradient(45deg, #100a18 25%, transparent 25%),
+    linear-gradient(-45deg, #100a18 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #100a18 75%),
+    linear-gradient(-45deg, transparent 75%, #100a18 75%);
+  background-size: 4px 4px;
+}
+
+/* Monitor */
+.monitor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitor__case {
+  background: #8a8a8a;
+  border: 4px solid #666;
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow:
+    0 0 0 4px #4a4a4a,
+    0 0 0 8px #333,
+    0 12px 40px rgba(0, 0, 0, 0.85);
+}
+
+.monitor__bezel {
+  background: #2e2e2e;
+  border-radius: 10px;
+  padding: 18px;
+  border: 3px solid #505050;
+}
+
+.monitor__display {
+  background: #050508;
+  border: 4px solid #1a1a1a;
+  border-radius: 6px;
+  width: 620px;
+  height: 380px;
+  position: relative;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.monitor__neck {
+  width: 160px;
+  height: 22px;
+  background: #777;
+  border-radius: 0 0 6px 6px;
+  border: 3px solid #555;
+  border-top: none;
+  margin: 0 auto -3px;
+}
+
+.monitor__base {
+  width: 260px;
+  height: 10px;
+  background: #666;
+  border-radius: 0 0 5px 5px;
+  border: 2px solid #555;
+  border-top: none;
+  margin: 0 auto;
+}
+
+/* LED de energia */
+.power-led {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--clr-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--clr-green), 0 0 16px var(--clr-green);
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+/* Título */
+.site-title {
+  font-family: var(--font-pixel);
+  font-size: 2.4em;
+  text-align: center;
+  color: var(--clr-gold);
+  text-shadow: 0 0 12px var(--clr-gold);
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+}
+
+/* Formulário */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field__label {
+  font-size: 0.85em;
+  color: var(--clr-gold);
+  text-shadow: 0 0 4px var(--clr-gold-dim);
+  letter-spacing: 1px;
+}
+
+.field__input {
+  background: #0a0a0a;
+  border: 2px solid #2a2a2a;
+  color: var(--clr-green);
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  padding: 7px 10px;
+  border-radius: 3px;
+  outline: none;
+  text-shadow: 0 0 4px var(--clr-green);
+  transition: border-color var(--dur-fast);
+}
+
+.field__input:focus {
+  border-color: var(--clr-gold);
+  box-shadow: 0 0 8px rgba(232, 197, 71, 0.25);
+}
+
+.login-error {
+  color: var(--clr-red);
+  font-size: 0.8em;
+  min-height: 1.2em;
+  text-align: center;
+  text-shadow: 0 0 4px rgba(255, 68, 68, 0.5);
+}
+
+.login-hint {
+  color: var(--clr-gold-dim);
+  font-size: 0.7em;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* --- Conteúdo do monitor: form e boot ocupam o mesmo espaço fixo --- */
+#monitorForm,
+.monitor-boot {
+  position: absolute;
+  inset: 0;
+  padding: 20px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.monitor-boot {
+  align-items: center;
+  gap: 10px;
+}
+
+#monitorForm[hidden],
+.monitor-boot[hidden] {
+  display: none !important;
+}
+
+.boot-line {
+  width: 0%;
+  height: 3px;
+  background: #fff;
+  box-shadow: 0 0 8px #fff;
+  transition: width 0.28s ease-out;
+}
+
+.boot-text {
+  font-family: var(--font-mono);
+  color: var(--clr-green);
+  font-size: 1em;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  text-shadow: 0 0 8px var(--clr-green);
+  min-height: 1.4em;
+  text-align: center;
+}

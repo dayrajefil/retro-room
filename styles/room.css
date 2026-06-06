@@ -1,0 +1,133 @@
+/* ========================================
+   ROOM — quarto, HUD, guestbook, screensaver
+   ======================================== */
+
+.screen--room {
+  background: var(--clr-bg);
+  overflow: hidden;
+}
+
+/* --- Viewport do canvas --- */
+.room-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* garante que o zoom não crie scrollbar */
+}
+
+#roomCanvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+
+/* --- HUD --- */
+.hud {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--clr-border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  z-index: 15;
+  font-size: 0.82em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hud__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud__icon {
+  font-size: 1em;
+}
+
+/* --- Guestbook --- */
+.guestbook {
+  position: fixed;
+  bottom: 60px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--clr-border);
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 15;
+  max-width: 230px;
+  max-height: 140px;
+  overflow-y: auto;
+  font-size: 0.7em;
+}
+
+.guestbook__title {
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 7px;
+  color: var(--clr-gold);
+}
+
+.guestbook__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.guestbook__entry {
+  color: var(--clr-gold-dim);
+  border-bottom: 1px solid rgba(107, 39, 55, 0.3);
+  padding-bottom: 4px;
+}
+
+.guestbook__user {
+  color: #9b3f52;
+  font-weight: bold;
+}
+
+/* --- Protetor de tela --- */
+.screensaver {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 998;
+  cursor: none;
+  display: flex;
+}
+
+.screensaver[hidden] {
+  display: none;
+}
+
+.screensaver__logo {
+  position: absolute;
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--clr-gold);
+  user-select: none;
+}
+
+.screensaver__symbol {
+  font-size: 3em;
+  line-height: 1;
+}
+
+.screensaver__name {
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+.screensaver__hint {
+  font-size: 0.7em;
+  opacity: 0.4;
+  margin-top: 6px;
+  display: block;
+}
